@@ -1,0 +1,20 @@
+{
+    "api": {
+        "key": "",
+        "secret": "",
+        "testnet": true
+    },
+    "trading": {
+        "symbols": [
+            "BTCUSDT",
+            "ETHUSDT"
+        ],
+        "timeframe": "15m",
+        "leverage": 3
+    },
+    "risk": {
+        "stop_loss": 2.0,
+        "take_profit": 4.0,
+        "max_drawdown": 10.0
+    }
+}
