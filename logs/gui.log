@@ -5,3 +5,7 @@
 2025-08-09 01:22:30,075 - src.ai_analyzer - ERROR - Google Generative AI library not installed. Install with: pip install google-generativeai
 2025-08-09 01:22:33,783 - src.ai_analyzer - ERROR - Google Generative AI library not installed. Install with: pip install google-generativeai
 2025-08-09 01:22:55,148 - src.ai_analyzer - ERROR - Google Generative AI library not installed. Install with: pip install google-generativeai
+2025-08-09 02:07:27,217 - src.feature_gate - INFO - User wants to upgrade for feature: automated_trading
+2025-08-09 02:07:44,275 - src.feature_gate - INFO - User wants to upgrade for feature: automated_trading
+2025-08-09 02:07:47,939 - src.feature_gate - INFO - User wants to upgrade for feature: automated_trading
+2025-08-09 02:08:55,670 - src.feature_gate - INFO - User wants to upgrade for feature: automated_trading

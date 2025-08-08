@@ -39,6 +39,11 @@ from gui.position_panel import PositionPanel
 from gui.analytics_panel import AnalyticsPanel
 from gui.logs_panel import LogsPanel
 from gui.settings_panel import SettingsPanel
+from gui.premium_panel import PremiumPanel
+
+# Subscription system
+from src.subscription_manager import SubscriptionManager
+from src.feature_gate import FeatureGate
 
 class BinanceFuturesBotGUI:
     """Main GUI Application for Binance Futures Trading Bot"""
@@ -63,6 +68,10 @@ class BinanceFuturesBotGUI:
         self.bot_thread = None
         self.config = None
         self.bot_components = {}
+        
+        # Initialize subscription system
+        self.subscription_manager = SubscriptionManager()
+        self.feature_gate = FeatureGate(self.subscription_manager)
         
         # Setup logging
         self._setup_gui_logging()
@@ -223,6 +232,7 @@ class BinanceFuturesBotGUI:
             ("📈 Analytics", "analytics"),
             ("📋 Logs", "logs"),
             ("⚙️ Settings", "settings"),
+            ("💎 Premium", "premium"),
         ]
         
         for text, key in nav_items:
@@ -265,6 +275,9 @@ class BinanceFuturesBotGUI:
         
         # Settings Panel
         self.panels["settings"] = SettingsPanel(self.content_area, bot_interface)
+        
+        # Premium Panel
+        self.panels["premium"] = PremiumPanel(self.content_area, bot_interface)
         
         # Show dashboard initially
         self._show_panel("dashboard")
@@ -336,6 +349,10 @@ class BinanceFuturesBotGUI:
     def _start_bot(self):
         """Start the trading bot"""
         if self.bot_running:
+            return
+        
+        # Check if user has access to automated trading
+        if not self.feature_gate.check_feature_access("automated_trading"):
             return
         
         # Validate configuration first
